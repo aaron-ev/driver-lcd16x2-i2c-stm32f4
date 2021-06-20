@@ -15,12 +15,21 @@ extern I2C_HandleTypeDef hi2c1; // change I2C handler based on the I2C periphera
 // macro definition
 
 #define MASK_UPPER_NIBBLE 0xf0
-#define LCD_DELAY_100ms   100
-// @commands
+#define LCD_DELAY_100MS    100
+#define LCD_DELAY_5MS       5
+#define LCD_DELAY_1MS       1
 
-#define  CMD_4BITMODE 		0x28
-#define  CMD_DISPLAY_OFF 	0x08
-#define  CMD_CLEAR			0x01
+// @commands
+#define  CMD_4BITMODE		        0x20
+#define  CMD_4BITMODE_2L		    0x28
+
+#define  CMD_DISPLAY_OFF 	        0x08
+#define  CMD_DISPLAY_ON 	        0x0C
+#define  CMD_DISPLAY_ON_BLIK_ON 	0x0D
+#define  CMD_CLEAR			        0x01
+#define  CMD_RETURN_HOME			0x02
+#define  CMD_SPECIAL_FSET           0x30
+#define  CMD_ENTRY_MODE1            0x06  // cursor/blink moves to the right and DDRAM address is increased by 1,shift OFF
 // function prototypes
 
 /*
@@ -36,4 +45,11 @@ void lcd_writeCMD(uint8_t cmd);
 *
 */
 void lcd_init(void);
+
+/*
+*   function name: lcd_writeData(char data);
+*     description: send data to lcd
+*           input: data to be sent
+*/
+void lcd_writeDATA(uint8_t cmd);
 #endif
