@@ -64,3 +64,9 @@ void lcd_init(void)
     lcd_writeCMD(CMD_DISPLAY_ON);
     HAL_Delay(LCD_DELAY_1MS);
 }
+
+void lcd_writeString(char *str)
+{
+    while(*str)
+    lcd_writeData(*str++)
+}
